@@ -3,6 +3,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import axios from 'axios';
 
 import Header from './src/components/Header';
+import PeopleList from './src/components/PeopleList';
 
 export default class App extends Component {
   constructor(props) {
@@ -21,18 +22,11 @@ export default class App extends Component {
     });
   }
 
-  renderList() {
-    return this.state.peoples.map((people, index) => {
-      const {first} = people.name;
-      return <Text key={index}>{first}</Text>;
-    });
-  }
-
   render() {
     return (
       <View>
         <Header title="Lista de Contatos" />
-        {this.renderList()}
+        <PeopleList peoples={this.state.peoples} />
       </View>
     );
   }
