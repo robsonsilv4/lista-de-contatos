@@ -1,14 +1,39 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet, View, Text} from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, View, Text} from 'react-native';
+import axios from 'axios';
 
 import Header from './src/components/Header';
 
-const App = () => {
-  return (
-    <View>
-      <Header title="Lista de Contatos" />
-    </View>
-  );
-};
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      peoples: [],
+    };
+  }
 
-export default App;
+  componentDidMount() {
+    axios.get('https://randomuser.me/api/?nat=br&results=5').then(response => {
+      const {results} = response.data;
+      this.setState({
+        peoples: results,
+      });
+    });
+  }
+
+  renderList() {
+    return this.state.peoples.map((people, index) => {
+      const {first} = people.name;
+      return <Text key={index}>{first}</Text>;
+    });
+  }
+
+  render() {
+    return (
+      <View>
+        <Header title="Lista de Contatos" />
+        {this.renderList()}
+      </View>
+    );
+  }
+}
