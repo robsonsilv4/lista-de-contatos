@@ -4,17 +4,15 @@ import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import {capitalizeFirstLetter} from '../utils/capitalizeFirstLetter';
 
 export default props => {
-  const {title, first, last} = props.people.name;
+  const {people, navigateTo} = props;
+  const {title, first, last} = people.name;
   return (
     <TouchableOpacity
       onPress={() => {
-        props.onPressNavigate();
+        navigateTo({people});
       }}>
       <View style={styles.line}>
-        <Image
-          style={styles.avatar}
-          source={{uri: props.people.picture.thumbnail}}
-        />
+        <Image style={styles.avatar} source={{uri: people.picture.thumbnail}} />
         <Text style={styles.lineText}>{`${capitalizeFirstLetter(
           title,
         )} ${first} ${last}`}</Text>

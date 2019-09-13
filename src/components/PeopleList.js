@@ -4,13 +4,10 @@ import {View, Text, StyleSheet} from 'react-native';
 import PeopleListItem from './PeopleListItem';
 
 export default props => {
-  const items = props.peoples.map((people, index) => {
+  const {peoples, onPressItem} = props;
+  const items = peoples.map((people, index) => {
     return (
-      <PeopleListItem
-        key={index}
-        people={people}
-        onPressNavigate={props.onPressItem}
-      />
+      <PeopleListItem key={index} people={people} navigateTo={onPressItem} />
     );
   });
 
