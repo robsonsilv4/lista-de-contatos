@@ -24,7 +24,12 @@ export default class App extends Component {
   render() {
     return (
       <View>
-        <PeopleList peoples={this.state.peoples} />
+        <PeopleList
+          peoples={this.state.peoples}
+          onPressItem={page => {
+            this.props.navigation.navigate('PeopleDetail');
+          }}
+        />
       </View>
     );
   }

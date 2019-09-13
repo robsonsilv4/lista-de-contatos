@@ -6,7 +6,10 @@ import {capitalizeFirstLetter} from '../utils/capitalizeFirstLetter';
 export default props => {
   const {title, first, last} = props.people.name;
   return (
-    <TouchableOpacity onPress={() => {}}>
+    <TouchableOpacity
+      onPress={() => {
+        props.onPressNavigate();
+      }}>
       <View style={styles.line}>
         <Image
           style={styles.avatar}

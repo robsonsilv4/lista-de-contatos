@@ -5,7 +5,13 @@ import PeopleListItem from './PeopleListItem';
 
 export default props => {
   const items = props.peoples.map((people, index) => {
-    return <PeopleListItem key={index} people={people} />;
+    return (
+      <PeopleListItem
+        key={index}
+        people={people}
+        onPressNavigate={props.onPressItem}
+      />
+    );
   });
 
   return <View style={styles.container}>{items}</View>;
