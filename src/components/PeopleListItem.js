@@ -1,11 +1,15 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
+import {capitalizeFirstLetter} from '../utils/capitalizeFirstLetter';
+
 export default props => {
-  const {first, last} = props.people.name;
+  const {title, first, last} = props.people.name;
   return (
     <View style={styles.line}>
-      <Text style={styles.lineText}>{`${first} ${last}`}</Text>
+      <Text style={styles.lineText}>{`${capitalizeFirstLetter(
+        title,
+      )} ${first} ${last}`}</Text>
     </View>
   );
 };
