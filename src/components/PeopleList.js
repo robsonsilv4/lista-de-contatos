@@ -12,7 +12,7 @@ export default props => {
       renderItem={({item}) => (
         <PeopleListItem people={item} navigateTo={onPressItem} />
       )}
-      keyExtractor={item => item.name.first}
+      keyExtractor={item => item.email}
     />
   );
 };
